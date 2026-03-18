@@ -28,7 +28,8 @@ const Post = ({ post }) => {
   const [showComments, setShowComments] = useState(false);
   const [newComment, setNewComment] = useState("");
   const [comments, setComments] = useState(post.comments || []);
-  const isOwner = authUser?._id === post.author._id;
+  if (!post.author) return null;
+  const isOwner = authUser?._id === post.author?._id;
   const isLiked = post.likes.includes(authUser?._id);
 
   const queryClient = useQueryClient();

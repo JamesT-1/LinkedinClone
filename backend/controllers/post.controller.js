@@ -10,6 +10,9 @@ export const getFeedPosts = async (req, res) => {
       .populate("comments.user", "name profilePicture")
       .sort({ createdAt: -1 });
 
+    const validPosts = posts.filter((post) => post.author !== null);
+    res.status(200).json(validPosts);
+
     res.status(200).json(posts);
   } catch (error) {
     console.error("Error In getFeedPosts Controller:", error);
