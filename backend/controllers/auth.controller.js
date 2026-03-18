@@ -46,7 +46,7 @@ export const signup = async (req, res) => {
     res.cookie("jwt-linkedin", token, {
       httpOnly: true,
       maxAge: 3 * 24 * 60 * 60 * 1000,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
     });
 
@@ -85,7 +85,7 @@ export const login = async (req, res) => {
     res.cookie("jwt-linkedin", token, {
       httpOnly: true,
       maxAge: 3 * 24 * 60 * 60 * 1000,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
     });
 
